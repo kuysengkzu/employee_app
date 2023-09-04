@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: employee-app
+  name: app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employee-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: employee-app
+    spec:
+      containers:
+        - env:
+            - name: MONGO_DB_URL
+              value: mongodb://mongo:27017/employees
+          image: kuyseng/employee_app
+          name: employee-app
+          ports:
+            - containerPort: 3000
+              hostPort: 3000
+              protocol: TCP
