@@ -24,7 +24,7 @@ EmployeeModel = schema_mongoose.model('employees', EmployeeSchema);
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    process.env.MONGO_DB_URL,
     { useNewUrlParser: true }
   )
   .then(() =>console.log('MongoDB Connected'))
