@@ -16,6 +16,9 @@ docker-compose up -d
 ```bash
 kdeld $( kgd | awk 'NR!=1 {print $1}' | xargs )
 kdels $( kgs | awk '$1!="kubernetes" {print $1}' | awk 'NR!=1 { print }' | xargs )
+
+kdelpvc mongo-volume-claim
+kdel persistentvolume mongo-volume
 ```
 ### Logs
 - see logs in dashboard

@@ -26,6 +26,18 @@ spec:
             claimName: mongo-volume-claim
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: employee-mongo
