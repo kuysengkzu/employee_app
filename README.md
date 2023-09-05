@@ -1,12 +1,30 @@
 ## Build image
 ```bash
 docker build -t kuyseng/employee_app .
-docker push
+docker push kuyseng/employee_app
 ```
 
 ## Run
 ```bash
 docker-compose up -d
+```
+
+### Delete all
+- we should not scale mongo (stateful app) with replicas > 1
+
+
+```bash
+kdeld $( kgd | awk 'NR!=1 {print $1}' | xargs )
+kdels $( kgs | awk '$1!="kubernetes" {print $1}' | awk 'NR!=1 { print }' | xargs )
+```
+### Logs
+- see logs in dashboard
+```bash
+kubectl get pods  # get pod names
+kubectl exec --stdin --tty PodNAME -- sh
+
+# restart to get latest image
+kubectl rollout restart deployment/employee-app
 ```
 
 
